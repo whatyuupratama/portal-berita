@@ -5,10 +5,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
   images: {
-    remotePatterns: allowedDomains.map((domain) => ({
-      protocol: 'https',
-      hostname: domain,
-    })),
+    remotePatterns: allowedDomains.map(
+      (domain) => ({
+        protocol: 'https',
+        hostname: domain,
+      }),
+      {
+        protocol: 'http',
+        hostname: 'assets.aceternity.com',
+      }
+    ),
   },
 };
 

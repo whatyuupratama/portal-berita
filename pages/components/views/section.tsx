@@ -1,24 +1,23 @@
 import Image from 'next/image';
-// import Sosmed from './ui/sosmed';
-// import LikeorNo from './ui/likeorno';
 import Link from 'next/link';
 import { poppins } from '../../components/fonts/poppins';
 import useFetchNews from '../hooks/useFetchNews';
-import typesApi from '../../types/typesApi';
+import { typesApi } from '../../../types/typesApi';
 
 const SectionComponent = () => {
   const { data, loading, error } = useFetchNews();
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div>Error: {error || 'Terjadi kesalahan'}</div>;
 
-  const filteredData = data.filter(
-    (item): item is typesApi => item.id !== undefined
-  );
-  const item = filteredData.find((item) => item.id === 1);
+  const filteredData = Array.isArray(data)
+    ? data.filter((item): item is typesApi => item.id !== undefined)
+    : [];
+
+  const item = filteredData.find((item) => item.id === 2);
   const title = item?.title || 'Loading...';
   const des = item?.smalldesc || 'Loading...';
-  const image = item?.imageUrl || '';
+  const image = item?.imageUrl || '/images/default.jpg'; // Default image
   const smalltag = item?.smalltag || '';
 
   return (

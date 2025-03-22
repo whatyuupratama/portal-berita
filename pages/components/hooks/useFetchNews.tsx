@@ -1,5 +1,5 @@
 import axios from 'axios';
-import typesApi from '../../types/typesApi';
+import { typesApi } from '../../../types/typesApi';
 import { useState, useEffect } from 'react';
 
 const ApiData = 'http://localhost:3000/api/strapiapi';

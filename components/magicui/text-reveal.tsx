@@ -23,17 +23,17 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const words = children.split(' ');
 
   return (
-    <div ref={targetRef} className={cn('relative z-0 h-[200vh]', className)}>
+    <div ref={targetRef} className={cn('relative z-0 h-[300vh]', className)}>
       <div>
         <span
           ref={targetRef}
-          className={`flex flex-wrap p-5 text-xs font- text-black/20 dark:text-white/20 md:p-8 md:text-xs lg:p-10 lg:text-xs xl:text-xs text-justify ${poppins.className}`}
+          className={`flex flex-wrap p-5 text-xl  text-black/20 dark:text-white/20 md:p-8 md:text-xl lg:p-10 lg:text-xl xl:text-xl  xl:font-bold text-justify ${poppins.className}`}
         >
           {words.map((word, i) => {
             const start = i / words.length;
             const end = start + 1 / words.length;
             return (
-              <Word key={i} progress={scrollYProgress} range={[start, end]}>
+              <Word key={i} progress={scrollYProgress} range={[end, start]}>
                 {word}
               </Word>
             );

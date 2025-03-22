@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import typesApi from '../types/typesApi';
+import { typesApi } from '../../types/typesApi';
 
 export default function fakeapi(
   req: NextApiRequest,

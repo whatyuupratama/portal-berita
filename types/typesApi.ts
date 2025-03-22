@@ -1,4 +1,4 @@
-type newsApi = {
+export type typesApi = {
   id?: number;
   title?: string;
   description?: string;
@@ -9,4 +9,3 @@ type newsApi = {
   popularPost?: boolean;
   date?: string;
 };
-export default newsApi;

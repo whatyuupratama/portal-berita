@@ -4,17 +4,16 @@ import Image from 'next/image';
 // import Backlink from '../../components/views/ui/linkback';
 import { poppins } from '../components/fonts/poppins';
 import useFetchNews from '../components/hooks/useFetchNews';
-import typesApi from '../types/typesApi';
+import { typesApi } from '../../types/typesApi';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 
 const Singlenews = () => {
   const router = useRouter();
   const { newsid } = router.query;
-  const { data, loading, error } = useFetchNews();
+  const { data, loading } = useFetchNews();
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   const item = data.find(
     (item): item is typesApi => item.id === Number(newsid)
@@ -87,7 +86,7 @@ const Singlenews = () => {
             animate='visible'
           >
             <Image
-              src={item.imageUrl || '/default-image.jpg'}
+              src={item.imageUrl!}
               alt='Preview of the article'
               fill
               className='object-cover rounded-xl'
